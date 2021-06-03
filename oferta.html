@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>Oferta </title>
+		
+		<script type="text/javascript"
+				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>
+	</head>
+	
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/oferta/registrar}" method="post" th:object="${oferta}">
+				<div class="form-group">
+					<label for="idoferta">ID:</label>
+					<input type="text" class="form-control" th:field="*{idOferta}"></input>
+					
+					<div class="form-group">
+						<label for="nombre">NOMBRE PRODUCTO:</label>
+						<input type="text" class="form-control" th:field="*{nameProducto}" id="nombre"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nameProducto')}" 
+							th:errors="*{nameProducto}">						
+						</div>
+						
+					</div>
+					<div class="form-group">
+						<label for="fechainicio">FECHA DE INICIO:</label>
+						<input type="text" class="form-control" th:field="*{fechaInicio}" id="fechainicio"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('fechaInicio')}" 
+							th:errors="*{fechaInicio}">						
+						</div>
+						
+					</div>
+				
+				<div class="form-group">
+						<label for="fechafinal">FECHA FINAL:</label>
+						<input type="text" class="form-control" th:field="*{fechaFinal}" id="fechafinal"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('fechaFinal')}" 
+							th:errors="*{fechaFinal}">						
+						</div>
+						
+					</div>
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/oferta/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+	
+</html>

@@ -39,25 +39,22 @@
 						</div>
 						
 					</div>
-					<div class="form-group">
-						<label for="fechainicio">FECHA DE INICIO:</label>
-						<input type="text" class="form-control" th:field="*{fechaInicio}" id="fechainicio"></input>
+				
+				<label for="fechainicio">FECHA DE INICIO:</label>
+						<input type="date" class="form-control" th:field="*{fechaInicio}" id="fechainicio"></input>
 						
 						<div class="alert alert-danger" th:if="${#fields.hasErrors('fechaInicio')}" 
 							th:errors="*{fechaInicio}">						
 						</div>
 						
-					</div>
-				
-				<div class="form-group">
 						<label for="fechafinal">FECHA FINAL:</label>
-						<input type="text" class="form-control" th:field="*{fechaFinal}" id="fechafinal"></input>
+						<input type="date" class="form-control" th:field="*{fechaFinal}" id="fechafinal"></input>
 						
 						<div class="alert alert-danger" th:if="${#fields.hasErrors('fechaFinal')}" 
 							th:errors="*{fechaFinal}">						
 						</div>
 						
-					</div>
+					
 				</div>
 				
 				<button type="submit" class="btn btn-primary">Aceptar</button>

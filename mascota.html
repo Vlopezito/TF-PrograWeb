@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>Mascota </title>
+		
+		<script type="text/javascript"
+				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>
+	</head>
+	
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/mascota/registrar}" method="post" th:object="${mascota}">
+				<div class="form-group">
+					<label for="idmascota">ID:</label>
+					<input type="text" class="form-control" th:field="*{idMascota}"></input>
+					
+					<div class="form-group">
+						<label for="nombre">NOMBRE:</label>
+						<input type="text" class="form-control" th:field="*{nameMascota}" id="nombre"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nameMascota')}" 
+							th:errors="*{nameMascota}">						
+						</div>
+						
+					</div>
+					<div class="form-group">
+						<label for="animal">ANIMAL:</label>
+						<input type="text" class="form-control" th:field="*{animal}" id="animal"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('animal')}" 
+							th:errors="*{animal}">						
+						</div>
+						
+					</div>
+				
+				<div class="form-group">
+						<label for="raza">RAZA:</label>
+						<input type="text" class="form-control" th:field="*{raza}" id="raza"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('raza')}" 
+							th:errors="*{raza}">						
+						</div>
+						
+					</div>
+					
+					<div class="form-group">
+						<label for="color">COLOR:</label>
+						<input type="text" class="form-control" th:field="*{color}" id="color"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('color')}" 
+							th:errors="*{color}">						
+						</div>
+						
+					</div>
+					
+					<div class="form-group">
+						<label for="descripcion">DESCRIPCION:</label>
+						<input type="text" class="form-control" th:field="*{descripcion}" id="descripcion"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('descripcion')}" 
+							th:errors="*{descripcion}">						
+						</div>
+						
+					</div>
+					
+					<div class="form-group">
+						<label for="genero">GENERO:</label>
+						<input type="text" class="form-control" th:field="*{genero}" id="genero"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('genero')}" 
+							th:errors="*{genero}">						
+						</div>
+						
+						<label for="duenoMascota"class="col-sm-2 col-form-label">DUENO DE MASCOTA:</label>
+						<select class="form-control" th:field="*{duenoMascota.idDuenoMascota}">
+						<option th:each="r:${listaDuenoMascotas}" th:value="${r.idDuenoMascota}"
+						th:text="${r.nameDuenoMascota}"
+						th:selected="(${r.idDuenoMascota}== *{duenoMascota.idDuenoMascota})")>
+						</option>
+						</select>
+						
+						
+						
+					</div>
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/mascota/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+	
+</html>

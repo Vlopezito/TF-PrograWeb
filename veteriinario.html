@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>Veterinario</title>
+		
+		<script type="text/javascript"
+				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>
+	</head>
+	
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/veterinario/registrar}" method="post" th:object="${veterinario}">
+				<div class="form-group">
+					<label for="idveterinario">ID:</label>
+					<input type="text" class="form-control" th:field="*{idVeterinario}"></input>
+					
+					<div class="form-group">
+						<label for="nombre">NOMBRE VETERINARIO:</label>
+						<input type="text" class="form-control" th:field="*{nameVeterinario}" id="nombre"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nameVeterinario')}" 
+							th:errors="*{nameVeterinario}">						
+						</div>
+						
+					</div>
+					<div class="form-group">
+						<label for="direccion">DIRECCION:</label>
+						<input type="text" class="form-control" th:field="*{direccion}" id="direccion"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('direccion')}" 
+							th:errors="*{direccion}">						
+						</div>
+						
+					</div>
+				
+				<div class="form-group">
+						<label for="telefono">TELEFONO:</label>
+						<input type="text" class="form-control" th:field="*{telefono}" id="telefono"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('telefono')}" 
+							th:errors="*{telefono}">						
+						</div>
+						
+					</div>
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/veterinario/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+	
+</html>

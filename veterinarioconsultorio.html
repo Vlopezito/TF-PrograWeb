@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>Veterinario x Consultorio</title>
+		
+		<script type="text/javascript"
+				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>
+	</head>
+	
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/veterinarioconsultorio/registrar}" method="post" th:object="${veterinarioconsultorio}">
+				<div class="form-group">
+					<label for="idveterinarioconsultorio">ID:</label>
+					<input type="text" class="form-control" th:field="*{idVeterinarioConsultorio}"></input>
+					
+					<label for="veterinario"class="col-sm-2 col-form-label">VETERINARIO:</label>
+						<select class="form-control" th:field="*{veterinario.idVeterinario}">
+						<option th:each="r:${listaVeterinarios}" th:value="${r.idVeterinario}"
+						th:text="${r.nameVeterinario}"
+						th:selected="(${r.idVeterinario}== *{veterinario.idVeterinario})")>
+						</option>
+						</select>
+					
+					<label for="consultorio"class="col-sm-2 col-form-label">CONSULTORIO:</label>
+						<select class="form-control" th:field="*{consultorio.idConsultorio}">
+						<option th:each="r:${listaConsultorios}" th:value="${r.idConsultorio}"
+						th:text="${r.nameConsultorio}"
+						th:selected="(${r.idConsultorio}== *{consultorio.idConsultorio})")>
+						</option>
+						</select>
+					
+				
+				<div class="form-group">
+						<label for="puesto">PUESTO:</label>
+						<input type="text" class="form-control" th:field="*{puesto}" id="puesto"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('puesto')}" 
+							th:errors="*{puesto}">						
+						</div>
+						
+					</div>
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/veterinarioconsultorio/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+	
+</html>

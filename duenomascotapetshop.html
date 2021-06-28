@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>DuenoMascota x PetShop</title>
+		
+		<script type="text/javascript"
+				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>
+	</head>
+	
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/duenomascotapetshop/registrar}" method="post" th:object="${duenomascotapetshop}">
+				<div class="form-group">
+					<label for="idduenomascotapetshop">ID:</label>
+					<input type="text" class="form-control" th:field="*{idDuenoMascotaPetShop}"></input>
+					
+					<label for="duenomascota"class="col-sm-2 col-form-label">DUENO DE MASCOTA:</label>
+						<select class="form-control" th:field="*{duenomascota.idDuenoMascota}">
+						<option th:each="r:${listaDuenoMascotas}" th:value="${r.idDuenoMascota}"
+						th:text="${r.nameDuenoMascota}"
+						th:selected="(${r.idDuenoMascota}== *{duenomascota.idDuenoMascota})")>
+						</option>
+						</select>
+					
+					<label for="petshop"class="col-sm-2 col-form-label">PETSHOP:</label>
+						<select class="form-control" th:field="*{petshop.idPetShop}">
+						<option th:each="r:${listaPetShops}" th:value="${r.idPetShop}"
+						th:text="${r.namePetShop}"
+						th:selected="(${r.idPetShop}== *{petshop.idPetShop})")>
+						</option>
+						</select>
+					
+				
+				<div class="form-group">
+						<label for="referencia">REFERENCIA:</label>
+						<input type="text" class="form-control" th:field="*{referencia}" id="referencia"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('referencia')}" 
+							th:errors="*{referencia}">						
+						</div>
+						
+					</div>
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/duenomascotapetshop/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+	
+</html>

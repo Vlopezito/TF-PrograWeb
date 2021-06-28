@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="UTF-8"></meta>
+		<title>Mascota x Consultorio</title>
+		
+		<script type="text/javascript"
+				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
+		</script>
+		
+		<link
+			href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+			rel="stylesheet" id="bootstrap-css">
+		</link>
+		
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js">
+		</script>
+		
+		<script src="code.jquery.com/jquery-3.2.1.min.js"></script>
+	</head>
+	
+	<body>
+		<div th:replace="fragments/header :: header"></div>
+		
+		<div class="container">
+			<form th:action="@{/mascotaconsultorio/registrar}" method="post" th:object="${mascotaconsultorio}">
+				<div class="form-group">
+					<label for="idmascotaconsultorio">ID:</label>
+					<input type="text" class="form-control" th:field="*{idMascotaConsultorio}"></input>
+					
+					<label for="mascota"class="col-sm-2 col-form-label">MASCOTA:</label>
+						<select class="form-control" th:field="*{mascota.idMascota}">
+						<option th:each="r:${listaMascotas}" th:value="${r.idMascota}"
+						th:text="${r.nameMascota}"
+						th:selected="(${r.idMascota}== *{mascota.idMascota})")>
+						</option>
+						</select>
+					
+					<label for="consultorio"class="col-sm-2 col-form-label">CONSULTORIO:</label>
+						<select class="form-control" th:field="*{consultorio.idConsultorio}">
+						<option th:each="r:${listaConsultorios}" th:value="${r.idConsultorio}"
+						th:text="${r.nameConsultorio}"
+						th:selected="(${r.idConsultorio}== *{consultorio.idConsultorio})")>
+						</option>
+						</select>
+					
+				
+				<div class="form-group">
+						<label for="enfermedad">ENFERMEDAD:</label>
+						<input type="text" class="form-control" th:field="*{enfermedad}" id="enfermedad"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('enfermedad')}" 
+							th:errors="*{enfermedad}">						
+						</div>
+						
+					</div>
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Aceptar</button>
+				<a href="/mascotaconsultorio/listar" class="btn btn-danger">Cancelar</a>
+				
+			</form>
+		</div>
+		
+		<div th:replace="fragments/footer :: footer"></div>
+	</body>
+	
+</html>

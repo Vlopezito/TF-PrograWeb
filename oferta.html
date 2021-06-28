@@ -39,6 +39,15 @@
 						</div>
 						
 					</div>
+					<div class="form-group">
+						<label for="nombre">DESCRIPCION OFERTA</label>
+						<input type="text" class="form-control" th:field="*{descOferta}" id="nombre"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('descOferta')}" 
+							th:errors="*{descOferta}">						
+						</div>
+						
+					</div>
 				
 				<label for="fechainicio">FECHA DE INICIO:</label>
 						<input type="date" class="form-control" th:field="*{fechaInicio}" id="fechainicio"></input>

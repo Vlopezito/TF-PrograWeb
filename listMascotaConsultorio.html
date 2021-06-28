@@ -28,13 +28,13 @@
 			<form id="myform">
 				<div class="row clearfix">
 					<div class="col-md-12 column">
-						<a 	style="border-bottom-color: black" th:href="@{/veterinario/irRegistrar}" id="add-row"
+						<a 	style="border-bottom-color: black" th:href="@{/veterinarioconsultorio/irRegistrar}" id="add-row"
 						   	type = "button"
 						   	class= "btn btn-primary btn-md left-block">
-							<span class="glyphicon glyphicon-plus"></span> Veterinario
+							<span class="glyphicon glyphicon-plus"></span> VeterinarioConsultorio
 						</a>
 						
-						<a 	style="border-bottom-color: black" th:href="@{/veterinario/irBuscar}" id="add-row"
+						<a 	style="border-bottom-color: black" th:href="@{/veterinarioconsultorio/irBuscar}" id="add-row"
 						   	type = "button"
 						   	class= "btn btn-primary btn-md left-block">
 							<span class="glyphicon glyphicon-search"></span> Buscar
@@ -44,22 +44,22 @@
 							<thead>
 								<tr>
 									<th class="text-center">CODIGO</th>
-									<th class="text-center">NOMBRE DE VETERINARIA </th>
-									<th class="text-center">DIRECCION </th>
-									<th class="text-center">TELEFONO </th>
+									<th class="text-center">NOMBRE DE VETERINARIO </th>
+									<th class="text-center">NOMBRE DE CONSULTORIO </th>
+									<th class="text-center">PUESTO </th>
 									<th class="text-center">OPERACION</th>
 									<th class="text-center">OPERACION</th>
 								</tr>
 							</thead>
 							
 							<tbody>
-								<tr th:each="rac: ${listaVeterinarios}">
-									<td th:text="${rac.idVeterinario}"></td>
-									<td th:text="${rac.nameVeterinario}"></td>
-									<td th:text="${rac.direccion}"></td>
-									<td th:text="${rac.telefono}"></td>
-									<td class="text-center"><a class="glyphicon glyphicon-trash" th:href="@{/veterinario/eliminar?id=}+${rac.idVeterinario}"> Eliminar</a></td>
-									<td class="text-center"><a class="glyphicon glyphicon-pencil" th:href="@{'/veterinario/modificar/' + ${rac.idVeterinario}}"> Modificar</a></td>
+								<tr th:each="rac: ${listaVeterinariosConsultorios}">
+									<td th:text="${rac.idVeterinarioConsultorio}"></td>
+									<td th:text="${rac.veterinario.nameVeterinario}"></td>
+									<td th:text="${rac.consultorio.nameConsultorio}"></td>
+									<td th:text="${rac.puesto}"></td>
+									<td class="text-center"><a class="glyphicon glyphicon-trash" th:href="@{/veterinarioconsultorio/eliminar?id=}+${rac.idVeterinarioConsultorio}"> Eliminar</a></td>
+									<td class="text-center"><a class="glyphicon glyphicon-pencil" th:href="@{'/veterinarioconsultorio/modificar/' + ${rac.idVeterinarioConsultorio}}"> Modificar</a></td>
 								</tr>
 							</tbody>
 						</table>

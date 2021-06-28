@@ -3,7 +3,7 @@
 	
 	<head>
 		<meta charset="UTF-8"></meta>
-		<title>Veterinario</title>
+		<title>Consultorio</title>
 		
 		<script type="text/javascript"
 				src="ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js">
@@ -25,21 +25,31 @@
 		<div th:replace="fragments/header :: header"></div>
 		
 		<div class="container">
-			<form th:action="@{/veterinario/registrar}" method="post" th:object="${veterinario}">
+			<form th:action="@{/consultorio/registrar}" method="post" th:object="${consultorio}">
 				<div class="form-group">
-					<label for="idveterinario">ID:</label>
-					<input type="text" class="form-control" th:field="*{idVeterinario}"></input>
+					<label for="idconsultorio">ID:</label>
+					<input type="text" class="form-control" th:field="*{idConsultorio}"></input>
 					
 					<div class="form-group">
-						<label for="nombre">NOMBRE VETERINARIO:</label>
-						<input type="text" class="form-control" th:field="*{nameVeterinario}" id="nombre"></input>
+						<label for="nombre">NOMBRE CONSULTORIO:</label>
+						<input type="text" class="form-control" th:field="*{nameConsultorio}" id="nombre"></input>
 						
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('nameVeterinario')}" 
-							th:errors="*{nameVeterinario}">						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nameConsultorio')}" 
+							th:errors="*{nameConsultorio}">						
 						</div>
 						
 					</div>
 					<div class="form-group">
+						<label for="ruc">RUC:</label>
+						<input type="text" class="form-control" th:field="*{ruc}" id="ruc"></input>
+						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('ruc')}" 
+							th:errors="*{ruc}">						
+						</div>
+						
+					</div>
+				
+				<div class="form-group">
 						<label for="direccion">DIRECCION:</label>
 						<input type="text" class="form-control" th:field="*{direccion}" id="direccion"></input>
 						
@@ -48,20 +58,20 @@
 						</div>
 						
 					</div>
-				
-				<div class="form-group">
-						<label for="telefono">TELEFONO:</label>
-						<input type="text" class="form-control" th:field="*{telefono}" id="telefono"></input>
+					<div class="form-group">
+						<label for="distrito">DISTRITO:</label>
+						<input type="text" class="form-control" th:field="*{distrito}" id="distrito"></input>
 						
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('telefono')}" 
-							th:errors="*{telefono}">						
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('distrito')}" 
+							th:errors="*{dirstrito}">						
 						</div>
 						
 					</div>
+					
 				</div>
 				
 				<button type="submit" class="btn btn-primary">Aceptar</button>
-				<a href="/veterinario/listar" class="btn btn-danger">Cancelar</a>
+				<a href="/consultorio/listar" class="btn btn-danger">Cancelar</a>
 				
 			</form>
 		</div>

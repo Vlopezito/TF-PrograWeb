@@ -45,6 +45,7 @@
 								<tr>
 									<th class="text-center">CODIGO</th>
 									<th class="text-center">NOMBRE DE PRODUCTO </th>
+									<th class="text-center">DESCRIPCION DE OFERTA </th>
 									<th class="text-center">FECHA INICIO </th>
 									<th class="text-center">FECHA FINAL </th>
 									<th class="text-center">OPERACION</th>
@@ -56,6 +57,7 @@
 								<tr th:each="rac: ${listaOfertas}">
 									<td th:text="${rac.idOferta}"></td>
 									<td th:text="${rac.nameProducto}"></td>
+									<td th:text="${rac.descOferta}"></td>
 									<td th:text="${#dates.format(rac.fechaInicio,'dd/MM/yyy')}"></td>
 									<td th:text="${#dates.format(rac.fechaFinal,'dd/MM/yyy')}"></td>
 									<td class="text-center"><a class="glyphicon glyphicon-trash" th:href="@{/oferta/eliminar?id=}+${rac.idOferta}"> Eliminar</a></td>

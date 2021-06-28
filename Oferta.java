@@ -1,6 +1,7 @@
 package pe.edu.upc.spring.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="Oferta")
@@ -22,21 +27,29 @@ public class Oferta implements Serializable {
 	@Column(name="nombreProducto", length = 60, nullable=false)
 	private String nameProducto;
 	
-	@Column(name="fechaInicio", length=11, nullable=false)
-	private String fechaInicio;
+	@Column(name="descripcionOferta", length = 90, nullable=false)
+	private String descOferta;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="fechaInicio", length=50, nullable=false)
+	@DateTimeFormat(pattern="yyy-MM-dd")
+	private Date fechaInicio;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name="fechaFinal", length=30 , nullable=false)
-	private String fechaFinal;
+	@DateTimeFormat(pattern="yyy-MM-dd")
+	private Date fechaFinal;
 
 	public Oferta() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Oferta(int idOferta , String nameProducto, String fechaInicio, String fechaFinal) {
+	public Oferta(int idOferta , String nameProducto,String descOferta, Date fechaInicio, Date fechaFinal) {
 		super();
 		this.idOferta = idOferta;
 		this.nameProducto = nameProducto;
+		this.descOferta = descOferta;
 		this.fechaInicio = fechaInicio;
 		this.fechaFinal = fechaFinal;
 	}
@@ -57,19 +70,27 @@ public class Oferta implements Serializable {
 		this.nameProducto = nameProducto;
 	}
 	
-	public String getFechaInicio() {
+	public String getDescOferta() {
+		return descOferta;
+	}
+
+	public void setDescOferta(String descOferta) {
+		this.descOferta = descOferta;
+	}
+
+	public Date getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(String fechaInicio) {
+	public void setFechaInicio(Date fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public String getFechaFinal() {
+	public Date getFechaFinal() {
 		return fechaFinal;
 	}
 
-	public void setFechaFinal(String fechaFinal) {
+	public void setFechaFinal(Date fechaFinal) {
 		this.fechaFinal = fechaFinal;
 	}
 }

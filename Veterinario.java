@@ -27,7 +27,7 @@ public class Veterinario implements Serializable {
 	
 	@Column(name="telefono", length=30 , nullable=false)
 	private String telefono;
-
+	
 	public Veterinario() {
 		super();
 		// TODO Auto-generated constructor stub

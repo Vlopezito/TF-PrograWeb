@@ -43,9 +43,7 @@ public class Mascota implements Serializable {
 	@JoinColumn(name="idDuenoMascota",nullable=false)
 	private DuenoMascota duenoMascota;
 
-
 	
-
 	public Mascota() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "petshop_cliente")
+@Table(name = "petshop_duenomascota")
 public class DuenoMascotaPetShop implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -22,7 +22,7 @@ public class DuenoMascotaPetShop implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "idDuenoMascota", nullable = false)
-	private DuenoMascota cliente;
+	private DuenoMascota duenomascota;
 
 	@ManyToOne
 	@JoinColumn(name = "idPetShop", nullable = false)
@@ -40,11 +40,11 @@ public class DuenoMascotaPetShop implements Serializable{
 	}
 
 	public DuenoMascota getDuenoMascota() {
-		return cliente;
+		return duenomascota;
 	}
 
-	public void setDuenoMascota(DuenoMascota cliente) {
-		this.cliente = cliente;
+	public void setDuenoMascota(DuenoMascota duenomascota) {
+		this.duenomascota= duenomascota;
 	}
 
 	public PetShop getPetShop() {
@@ -71,11 +71,11 @@ public class DuenoMascotaPetShop implements Serializable{
 		super();
 	}
 
-	public DuenoMascotaPetShop(int idDuenoMascotaPetShop, DuenoMascota cliente, PetShop petshop,
+	public DuenoMascotaPetShop(int idDuenoMascotaPetShop, DuenoMascota duenomascota, PetShop petshop,
 			String referencia) {
 		super();
 		this.idDuenoMascotaPetShop = idDuenoMascotaPetShop;
-		this.cliente = cliente;
+		this.duenomascota = duenomascota;
 		this.petshop = petshop;
 		this.referencia = referencia;
 	}
